@@ -430,8 +430,8 @@ async function renderDashboardUI() {
   await fetchCategories();
   await fetchExpenses();
   await fetchBudgets();
-  updateFilterButtons(currentFilter); // Set initial active filter button
   renderCharts(); // Initial chart render after all data is fetched
+  updateFilterButtons(currentFilter); // Set initial active filter button
 }
 
 function populateCategoryDropdown() {
