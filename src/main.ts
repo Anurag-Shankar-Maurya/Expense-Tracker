@@ -154,7 +154,7 @@ async function setBudget(categoryId: string, amount: number) {
 
 /**
  * Filters expenses based on the selected time frame.
- * @param filter The time frame filter ('Today', 'Last 7 Days', 'This Month', 'Last Month', 'This Year', 'Last 6 Months').
+ * @param filter The time frame filter ('Today', 'Last 7 Days', 'This Month', 'Last Month', 'Last 6 Months', 'This Year').
  * @returns An array of filtered expenses.
  */
 function getFilteredExpenses(filter: string): any[] {
@@ -176,11 +176,11 @@ function getFilteredExpenses(filter: string): any[] {
       startDate = new Date(now.getFullYear(), now.getMonth() - 1, 1, 0, 0, 0, 0);
       endDate = new Date(now.getFullYear(), now.getMonth(), 0, 23, 59, 59, 999); // End of last month
       break;
-    case 'This Year':
-      startDate = new Date(now.getFullYear(), 0, 1, 0, 0, 0, 0);
-      break;
     case 'Last 6 Months':
       startDate = new Date(now.getFullYear(), now.getMonth() - 5, 1, 0, 0, 0, 0);
+      break;
+    case 'This Year':
+      startDate = new Date(now.getFullYear(), 0, 1, 0, 0, 0, 0);
       break;
     default:
       startDate = new Date(now.getFullYear(), now.getMonth(), 1, 0, 0, 0, 0); // Default to This Month
@@ -366,8 +366,8 @@ async function renderDashboardUI() {
             <button id="filter-last-7-days" class="px-5 py-2 bg-background text-text rounded-lg hover:bg-primary/20 focus:bg-primary/30 transition-colors duration-200 text-sm data-[active=true]:bg-primary/30 data-[active=true]:text-white">Last 7 Days</button>
             <button id="filter-this-month" class="px-5 py-2 bg-background text-text rounded-lg hover:bg-primary/20 focus:bg-primary/30 transition-colors duration-200 text-sm data-[active=true]:bg-primary/30 data-[active=true]:text-white">This Month</button>
             <button id="filter-last-month" class="px-5 py-2 bg-background text-text rounded-lg hover:bg-primary/20 focus:bg-primary/30 transition-colors duration-200 text-sm data-[active=true]:bg-primary/30 data-[active=true]:text-white">Last Month</button>
-            <button id="filter-this-year" class="px-5 py-2 bg-background text-text rounded-lg hover:bg-primary/20 focus:bg-primary/30 transition-colors duration-200 text-sm data-[active=true]:bg-primary/30 data-[active=true]:text-white">This Year</button>
             <button id="filter-last-6-months" class="px-5 py-2 bg-background text-text rounded-lg hover:bg-primary/20 focus:bg-primary/30 transition-colors duration-200 text-sm data-[active=true]:bg-primary/30 data-[active=true]:text-white">Last 6 Months</button>
+            <button id="filter-this-year" class="px-5 py-2 bg-background text-text rounded-lg hover:bg-primary/20 focus:bg-primary/30 transition-colors duration-200 text-sm data-[active=true]:bg-primary/30 data-[active=true]:text-white">This Year</button>
           </div>
 
           <!-- Key Financial Metrics -->
@@ -684,10 +684,10 @@ function renderLineChart() {
     let tempDate = new Date(now.getFullYear(), now.getMonth(), 1);
     if (currentFilter === 'Last Month') {
       tempDate = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-    } else if (currentFilter === 'This Year') {
-      tempDate = new Date(now.getFullYear(), 0, 1);
     } else if (currentFilter === 'Last 6 Months') {
       tempDate = new Date(now.getFullYear(), now.getMonth() - 5, 1);
+    } else if (currentFilter === 'This Year') {
+      tempDate = new Date(now.getFullYear(), 0, 1);
     }
 
     const endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0); // End of current month
