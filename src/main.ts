@@ -665,7 +665,6 @@ function renderLineChart() {
   }
 
   const filteredExpenses = getFilteredExpenses(currentFilter);
-  const spendingByPeriod: { [key: string]: number } = {};
   const labels: string[] = [];
   const data: number[] = [];
 
@@ -1049,7 +1048,7 @@ async function handleAuthStateChange(session: any) {
 }
 
 // Initial check and listen for auth changes
-supabase.auth.onAuthStateChange((event, session) => {
+supabase.auth.onAuthStateChange((_, session) => {
   handleAuthStateChange(session);
 });
 
