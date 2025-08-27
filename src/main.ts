@@ -198,7 +198,7 @@ function renderAuthUI() {
   document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div class="min-h-screen bg-background text-text p-4 md:p-8 lg:p-12 flex flex-col items-center justify-center">
       <div class="bg-surface p-8 rounded-xl shadow-lg border border-border w-full max-w-md text-center">
-        <h2 class="text-3xl font-bold text-primary mb-6">Welcome to Finance Dashboard</h2>
+        <h2 class="text-3xl font-bold text-primary mb-6">Welcome to Expense Tracker Dashboard</h2>
         <p class="text-textSecondary mb-8">Sign in or create an account to manage your finances.</p>
 
         <form id="auth-form" class="space-y-4">
@@ -231,7 +231,7 @@ async function renderDashboardUI() {
     <div class="min-h-screen bg-background text-text p-4 md:p-8 lg:p-12 flex flex-col items-center">
       <header class="w-full max-w-7xl mb-10 md:mb-12 lg:mb-16 flex justify-between items-center">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary leading-tight tracking-tight animate-fade-in-down">
-          <span class="block">Personal Finance</span>
+          <span class="block">Expense Tracker</span>
           <span class="block text-accent">Dashboard</span>
         </h1>
         <button id="sign-out-btn" class="px-4 py-2 bg-error text-white rounded-lg font-semibold hover:bg-error/80 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-error/50">
