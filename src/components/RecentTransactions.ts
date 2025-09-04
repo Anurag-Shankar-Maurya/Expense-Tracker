@@ -49,7 +49,7 @@ export function renderRecentTransactions(container: HTMLElement, props: RecentTr
           <div class="relative w-full">
             <input type="text" id="description-filter" placeholder="e.g., Groceries, Rent" value="${props.descriptionFilter}"
                    class="w-full p-2 bg-surface border border-border rounded-lg text-text placeholder-textSecondary focus:ring-primary focus:border-primary transition-all duration-200" />
-            <button id="description-filter-button" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary text-white rounded-md p-1.5 hover:bg-primary/80 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+            <button id="description-filter-button" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary text-white rounded-md p-1.5 hover:bg-primary/80 transition-colors duration-200">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
@@ -148,11 +148,6 @@ export function renderRecentTransactions(container: HTMLElement, props: RecentTr
   categoryFilterSelect.addEventListener('change', (event) => {
     const target = event.target as HTMLSelectElement;
     props.onFilterChange({ categoryId: target.value });
-  });
-
-  // Enable/disable the description filter button based on input
-  descriptionFilterInput.addEventListener('input', () => {
-    descriptionFilterButton.disabled = !descriptionFilterInput.value.trim();
   });
 
   // Filter when the description filter button is clicked
